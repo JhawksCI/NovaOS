@@ -1,18 +1,35 @@
 import { useState } from "react";
+
 import BootScreen from "./components/BootScreen";
-import Desktop from "./components/Desktop";
+import Desktop from "./desktop/Desktop";
+import Taskbar from "./components/Taskbar";
+
 
 function App() {
+
     const [booted, setBooted] = useState(false);
 
+
     return (
+
         booted ? (
-            <Desktop />
+
+            <>
+                <Desktop />
+                <Taskbar />
+            </>
+
         ) : (
-            <BootScreen onBootComplete={() => setBooted(true)} />
+
+            <BootScreen 
+                onFinish={() => setBooted(true)}
+            />
+
         )
+
     );
+
 }
 
-export default App;
 
+export default App;

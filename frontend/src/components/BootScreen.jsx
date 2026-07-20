@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/boot.css";
 
-function BootScreen({ onBootComplete }) { // Réception du callback
+function BootScreen({ onFinish }) {
     const [lines, setLines] = useState([]);
     const [progress, setProgress] = useState(0);
 
@@ -20,15 +20,14 @@ function BootScreen({ onBootComplete }) { // Réception du callback
             }, (index + 1) * 800);
         });
 
-        // Déclenche la transition vers le bureau après la fin du boot
+        // Fin du démarrage dynamique
         setTimeout(() => {
-            onBootComplete();
-        }, 4500);
-    }, [onBootComplete]);
+            onFinish();
+        }, (bootLines.length + 1) * 800);
+    }, [onFinish]); // Ajout de onFinish dans le tableau des dépendances
 
     return (
         <div className="boot-screen">
-            {/* Ton contenu logo, logs et loader inchangé */}
             <div className="nova-logo">
                 {"NOVAOS".split("").map((letter, index) => (
                     <span key={index} style={{ animationDelay: `${index * 0.2}s` }}>
@@ -36,12 +35,15 @@ function BootScreen({ onBootComplete }) { // Réception du callback
                     </span>
                 ))}
             </div>
+            
             <p className="subtitle">Modern System Interface</p>
+            
             <div className="boot-log">
                 {lines.map((line, index) => (
                     <div key={index}>[✓] {line}</div>
                 ))}
             </div>
+            
             <div className="loader">
                 <div className="progress" style={{ width: `${progress}%` }}></div>
             </div>

@@ -1,0 +1,73 @@
+.desktop {
+
+    height:100vh;
+    width:100%;
+
+    background:
+    radial-gradient(circle at top,#101a35,#050510);
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+.icons {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+    padding:30px;
+
+}
+
+
+.app-icon {
+
+    width:90px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:.25s;
+
+}
+
+
+.app-icon svg {
+
+    color:#00ffff;
+
+    filter:
+    drop-shadow(0 0 8px cyan);
+
+}
+
+
+.app-icon:hover {
+
+    transform:scale(1.1);
+
+}
+
+
+.app-icon span {
+
+    font-size:14px;
+
+}

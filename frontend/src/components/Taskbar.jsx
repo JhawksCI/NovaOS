@@ -1,3 +1,4 @@
+import "../styles/taskbar.css";
 import NovaButton from "./NovaButton";
 import Clock from "./Clock";
 import Battery from "./Battery";
